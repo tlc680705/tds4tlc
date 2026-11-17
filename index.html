@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="TLC 的个人网站，记录我的介绍、作品与想法。">
+  <title>TLC — 个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f5f0;
+      --ink: #20231f;
+      --muted: #777a72;
+      --line: #dedfd6;
+      --green: #c8f169;
+      --green-dark: #4a6421;
+      --white: #fffefa;
+      --mono: "DM Mono", monospace;
+      --sans: "DM Sans", "Noto Sans SC", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible { outline: 2px solid var(--green-dark); outline-offset: 5px; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+    .topbar { height: 78px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+    .brand { display: flex; align-items: center; gap: 11px; font-size: 15px; font-weight: 700; letter-spacing: -.03em; }
+    .brand-mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--green); font-family: var(--mono); font-size: 12px; }
+    nav { display: flex; align-items: center; gap: 32px; color: #5e615a; font-size: 13px; }
+    nav a:hover, .text-link:hover { color: var(--green-dark); }
+    .nav-contact { padding: 10px 15px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink); }
+    .hero { min-height: 610px; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 60px; padding: 86px 0 96px; }
+    .eyebrow, .section-kicker { font-family: var(--mono); text-transform: uppercase; letter-spacing: .12em; font-size: 11px; color: var(--muted); }
+    .status { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 27px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 50px; background: rgba(255,254,250,.55); font-size: 12px; color: #555950; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #86b835; box-shadow: 0 0 0 4px rgba(134,184,53,.13); }
+    h1 { max-width: 670px; margin: 0; font-size: clamp(48px, 7.3vw, 88px); line-height: 1.09; letter-spacing: -.075em; font-weight: 600; }
+    h1 .highlight { position: relative; z-index: 0; white-space: nowrap; }
+    h1 .highlight::after { position: absolute; z-index: -1; content: ""; height: 30%; left: -3px; right: -5px; bottom: 7px; background: var(--green); transform: rotate(-1.5deg); }
+    .hero-copy { max-width: 465px; margin: 26px 0 30px; color: #696c64; font-size: 16px; line-height: 1.9; }
+    .actions { display: flex; align-items: center; gap: 23px; }
+    .button { display: inline-flex; align-items: center; gap: 11px; padding: 14px 19px; border-radius: 6px; background: var(--ink); color: white; font-size: 13px; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); background: #3a4036; }
+    .arrow { font-size: 16px; }
+    .text-link { font-size: 13px; color: #5e615a; }
+    .visual { position: relative; width: min(100%, 390px); aspect-ratio: 1 / 1.04; justify-self: end; display: grid; place-items: center; overflow: hidden; border-radius: 48% 48% 6px 6px; background: #e7e9dc; }
+    .visual::before, .visual::after { position: absolute; content: ""; border: 1px solid rgba(32,35,31,.12); border-radius: 50%; }
+    .visual::before { width: 280px; height: 280px; }
+    .visual::after { width: 360px; height: 360px; }
+    .sun { position: absolute; top: 16%; right: 18%; width: 57px; height: 57px; border-radius: 50%; background: var(--green); }
+    .monogram { z-index: 1; font-family: var(--mono); font-size: clamp(75px, 12vw, 140px); letter-spacing: -.12em; transform: translateX(-8px); }
+    .visual-note { position: absolute; z-index: 2; bottom: 22px; left: 22px; padding: 9px 12px; background: var(--white); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; }
+    .section { padding: 92px 0; border-top: 1px solid var(--line); }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 36px; }
+    h2 { margin: 9px 0 0; font-size: clamp(30px, 4vw, 46px); line-height: 1.2; letter-spacing: -.06em; font-weight: 600; }
+    .section-intro { max-width: 390px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
+    .about-stamp { min-height: 210px; padding: 28px; display: flex; flex-direction: column; justify-content: space-between; background: var(--green); }
+    .about-stamp strong { font-family: var(--mono); font-size: 54px; letter-spacing: -.1em; }
+    .about-stamp span { max-width: 190px; font-size: 13px; line-height: 1.7; }
+    .about-text { color: #62665d; font-size: 15px; line-height: 2; }
+    .about-text p { margin: 0 0 17px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+    .chip { padding: 8px 12px; border: 1px solid var(--line); border-radius: 99px; color: #5b5e56; font-size: 11px; }
+    .project-card { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line); }
+    .project-card:last-child { border-bottom: 1px solid var(--line); }
+    .project-number { margin-bottom: 10px; color: var(--muted); font-family: var(--mono); font-size: 11px; }
+    .project-card h3 { margin: 0 0 8px; font-size: 20px; font-weight: 600; letter-spacing: -.04em; }
+    .project-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .project-arrow { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; transition: background .2s, transform .2s; }
+    .project-card a:hover .project-arrow { background: var(--green); transform: rotate(45deg); }
+    .contact { padding: 75px 7%; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; background: var(--ink); color: var(--white); }
+    .contact .section-kicker { color: #b7baaf; }
+    .contact h2 { max-width: 610px; margin-top: 14px; font-size: clamp(35px, 5vw, 57px); }
+    .contact p { color: #b7baaf; font-size: 13px; line-height: 1.8; }
+    .contact .button { background: var(--green); color: var(--ink); white-space: nowrap; }
+    .contact .button:hover { background: #d7ff8b; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 27px 0 35px; color: var(--muted); font-size: 11px; }
+    footer a { color: var(--ink); }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 560px); }
+      .topbar { height: 68px; }
+      nav { gap: 15px; font-size: 12px; }
+      nav a:nth-child(2) { display: none; }
+      .nav-contact { padding: 8px 11px; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 48px; padding: 77px 0 72px; }
+      .visual { width: min(100%, 340px); justify-self: center; }
+      .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .about-stamp { min-height: 170px; }
+      .section { padding: 70px 0; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .contact { grid-template-columns: 1fr; padding: 45px 28px; }
+      .contact .button { justify-self: start; }
+    }
+    @media (max-width: 420px) {
+      .hero { padding-top: 60px; }
+      .actions { gap: 15px; }
+      .button { padding: 13px 15px; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="#home" aria-label="TLC 首页"><span class="brand-mark">T</span><span>TLC / 个人主页</span></a>
+    <nav aria-label="主导航">
+      <a href="#about">关于</a>
+      <a href="#work">作品</a>
+      <a class="nav-contact" href="#contact">联系我 ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="shell hero" id="home">
+      <div>
+        <div class="status"><span class="status-dot"></span>你好，欢迎来到我的小站</div>
+        <p class="eyebrow">A LITTLE SPACE ON THE INTERNET</p>
+        <h1>你好，我是<br><span class="highlight">TLC.</span></h1>
+        <p class="hero-copy">这里是我的个人角落。我喜欢探索新想法、创造有用的东西，也乐于把一路上的收获记录下来。</p>
+        <div class="actions">
+          <a class="button" href="#about">认识一下 <span class="arrow">↓</span></a>
+          <a class="text-link" href="https://github.com/tlc680705" target="_blank" rel="noreferrer">看看我的 GitHub ↗</a>
+        </div>
+      </div>
+      <div class="visual" aria-label="TLC 字母图形">
+        <span class="sun"></span>
+        <span class="monogram">T.</span>
+        <span class="visual-note">MADE WITH CURIOSITY / 2026</span>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="section-kicker">01 / ABOUT</p><h2>关于我</h2></div>
+          <p class="section-intro">一个持续学习、保持好奇的人。这个页面会随着我的经历与想法慢慢更新。</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-stamp"><strong>HELLO!</strong><span>很高兴你来到这里。希望你能找到有趣的东西。</span></div>
+          <div class="about-text">
+            <p>我是 TLC，目前正在探索自己感兴趣的方向。比起只停留在想法里，我更喜欢动手尝试，把灵感一点点变成真实的作品。</p>
+            <p>这个网站是我的起点：之后会在这里分享正在做的项目、学到的新东西，以及值得记录的生活片段。</p>
+            <div class="skills" aria-label="兴趣标签"><span class="chip">持续学习</span><span class="chip">创造与探索</span><span class="chip">分享想法</span><span class="chip">保持好奇</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="section-kicker">02 / SELECTED WORK</p><h2>正在发生</h2></div>
+          <p class="section-intro">作品集还在整理中。先从 GitHub 出发，看看我正在探索的代码世界。</p>
+        </div>
+        <div class="project-card">
+          <div><div class="project-number">01 — GITHUB</div><h3>我的代码与实验</h3><p>浏览我的公开仓库，看看正在进行的项目与小小尝试。</p></div>
+          <a href="https://github.com/tlc680705?tab=repositories" target="_blank" rel="noreferrer" aria-label="浏览 GitHub 项目"><span class="project-arrow">↗</span></a>
+        </div>
+        <div class="project-card">
+          <div><div class="project-number">02 — THIS WEBSITE</div><h3>个人网站 · 初始版本</h3><p>一个持续生长的个人主页，用来介绍自己、分享作品与记录想法。</p></div>
+          <a href="https://github.com/tlc680705/tds4tlc" target="_blank" rel="noreferrer" aria-label="查看网站源码"><span class="project-arrow">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell contact" id="contact">
+      <div><p class="section-kicker">03 / GET IN TOUCH</p><h2>有想法？<br>欢迎来聊聊。</h2><p>可以通过 GitHub 找到我。期待认识更多有趣的人。</p></div>
+      <a class="button" href="https://github.com/tlc680705" target="_blank" rel="noreferrer">在 GitHub 上联系 <span class="arrow">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="shell"><span>© <span id="year">2026</span> TLC. 用好奇心制作。</span><a href="#home">回到顶部 ↑</a></footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
